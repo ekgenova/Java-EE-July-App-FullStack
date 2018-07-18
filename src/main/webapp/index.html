@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Banking Application</title>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Banking Application</a>
+        </div>
+    </div>
+</nav>
+
+
+<div ng-controller="myApp" ng-hide="isHidden" ng-init ="accounts=[{'firstName': 'John', 'secondName': 'Doe','accountNumber': '1234'},{'firstName': 'Jane','secondName': 'Doe','accountNumber': '1235'}, {'firstName': 'Kat', 'secondName': 'The Cat', 'accountNumber': '3333'}]">
+    <h3><span>Simple example</span></h3>
+    <ul>
+        <li ng-repeat="account in accounts">{{account}}</li>
+    </ul>
+    <input type="text" placeholder="search" ng-model="search">
+    <h3><span>Table example</span></h3>
+    <table ng-style="color2">
+        <tr>
+            <th>FIRST NAME</th>
+            <th>SECOND NAME</th>
+            <th>ACCOUNT NUMBER</th>
+        </tr>
+        <tr ng-repeat="account in accounts | filter:search">
+            <td style="width:200px">{{account.firstName |  uppercase}}</td>
+            <td style="width:200px">{{account.secondName | uppercase}}</td>
+            <td style="width:200px">{{account.accountNumber}}</td>
+        </tr>
+    </table>
+    <br/>
+    <div>
+        <button style="background-color: darkblue;color: white;" ng-click="changecolor('darkblue')">Blue</button>
+        <button style="background-color: red; color: white;" ng-click="changecolor('red')">Red</button>
+        <button style="background-color: green; color: white;" ng-click="changecolor('green')">Green</button>
+        <button ng-click="changecolor('black')">Reset</button>
+    </div>
+
+</div>
+<div>Hide div: <input type="checkbox" ng-model="isHidden"/></div>
+
+<link rel="stylesheet" href="scripts/bootstrap.min.css">
+
+<script src="scripts/jquery-2.1.4.min.js"></script>
+<script src="scripts/angular.min.js"></script>
+<script src="app/app.js"></script>
+<script src="scripts/ui-router.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+</body>
+</html>
